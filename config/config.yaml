@@ -1,0 +1,11 @@
+paths:
+  - path: /
+    method: GET
+    response: 
+      body: '{"success":true}'
+      code: 200
+  - path: /post
+    method: POST
+    response: 
+      body: '{"success":true}'
+      code: 200
