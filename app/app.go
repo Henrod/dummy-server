@@ -42,5 +42,6 @@ func (a *App) configure(parser parser.Parser) error {
 
 // Start starts listening on server
 func (a *App) Start() {
-	log.Fatal(http.ListenAndServe("localhost:8080", a.router))
+	log.Println("listening on 0.0.0.0:8080")
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", a.router))
 }
