@@ -1,11 +1,13 @@
 package app
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/Henrod/dummy-server/parser"
 	"github.com/gorilla/mux"
+	"github.com/spf13/viper"
 )
 
 // App starts the server with routes
@@ -42,6 +44,8 @@ func (a *App) configure(parser parser.Parser) error {
 
 // Start starts listening on server
 func (a *App) Start() {
-	log.Println("listening on 0.0.0.0:8080")
-	log.Fatal(http.ListenAndServe("0.0.0.0:8080", a.router))
+	port := viper.GetInt("server.port")
+	addr := fmt.Sprintf("0.0.0.0:%d", port)
+	log.Printf("listening on %s\n", addr)
+	log.Fatal(http.ListenAndServe(addr, a.router))
 }
